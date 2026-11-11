@@ -1,0 +1,31 @@
+def kegiatan_terpilih(kegiatan):
+    # Urutkan berdasarkan waktu selesai
+    kegiatan.sort(key=lambda x: x[2])
+
+    terpilih = []
+    waktu_selesai = 0
+
+    for nama, mulai, selesai in kegiatan:
+        if mulai >= waktu_selesai:
+            terpilih.append(nama)
+            waktu_selesai = selesai
+
+    return terpilih, len(terpilih)
+#kegiatan dengan format (nama, waktu_mulai, waktu_selesai)
+kegiatan = [
+    ("A", 8, 10),
+    ("B", 9, 10),
+    ("C", 10, 12),
+    ("D", 10.30, 11.30),
+    ("E", 11, 12.30),
+    ("F", 12, 13)
+]
+
+# Urutkan berdasarkan waktu selesai
+kegiatan.sort(key=lambda x: x[2])
+
+terpilih, jumlah = kegiatan_terpilih(kegiatan)
+waktu_selesai = 0
+
+print("Kegiatan yang dipilih:", terpilih)
+print("Jumlah kegiatan:", jumlah)
